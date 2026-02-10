@@ -157,13 +157,13 @@ export default function Home() {
         </Suspense>
 
         {/* ────── CONTACT ────── */}
-        <Card className="p-5" id="contact">
+        <div id="contact"><Card className="p-5">
           <div className="flex items-center gap-2 mb-4">
             <MessageSquare className="h-4 w-4 text-[#888]" />
             <span className="text-sm font-semibold">Drop a line</span>
           </div>
           <ContactForm />
-        </Card>
+        </Card></div>
 
         {/* Footer */}
         <div className="pt-6 pb-2 text-center">
