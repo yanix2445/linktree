@@ -9,7 +9,7 @@ export function CalFloatingButton() {
     ;(async function () {
       const cal = await getCalApi({
         namespace: "premier-contact-15",
-        embedLibUrl: "https://cal.yanis-harrat.com/embed/embed.js",
+        embedJsUrl: "https://cal.yanis-harrat.com/embed/embed.js",
       })
       cal("ui", {
         theme: "dark",
