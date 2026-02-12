@@ -12,14 +12,21 @@ export const projects: Project[] = [
     title: "Home Lab",
     description: "Infrastructure self-hosted — Proxmox, Docker, Traefik & services maison",
     href: "https://github.com/yanix2445",
-    image: "https://opengraph.githubassets.com/1/yanix2445/homelab",
+    image: "/homelabs.png",
     tag: "Infra",
   },
   {
     title: "Portfolio",
     description: "Mon site portfolio — yanis-harrat.com",
     href: "https://yanis-harrat.com",
-    image: "https://opengraph.githubassets.com/1/yanix2445/portfolio",
+    image: "/portfolio-v2.png",
     tag: "Next.js",
+  },
+  {
+    title: "Linktree",
+    description: "Ce projet — Un Linktree moderne et performant",
+    href: "https://github.com/yanix2445/linktree",
+    image: "/linktree.png",
+    tag: "Side project",
   },
 ]

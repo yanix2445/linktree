@@ -17,6 +17,8 @@ import { LinkedInSection } from "@/components/linkedin-section"
 import { InstagramSection } from "@/components/instagram-section"
 import { FreelanceServicesSection } from "@/components/freelance-services-section"
 import { SoftwareSection } from "@/components/software-section"
+import { getContributions } from "@/lib/github"
+import { Github } from "lucide-react"
 
 /* ── helpers ── */
 function SectionSkeleton() {
@@ -44,6 +46,20 @@ function ContactBadge({ icon, value, href }: { icon: React.ReactNode; value?: st
   )
 }
 
+async function GithubBadge({ username }: { username: string }) {
+  const calendar = await getContributions(username)
+  const count = calendar?.totalContributions || 198 // Fallback to 198 as per user mention if API fails
+  const formattedCount = count >= 1000 ? `${(count / 1000).toFixed(1)}k` : count
+
+  return (
+    <ContactBadge
+      icon={<Github className="h-3 w-3" />}
+      value={formattedCount.toString()}
+      href={`https://github.com/${username}`}
+    />
+  )
+}
+
 /* ── page ── */
 export default function Home() {
   return (
@@ -52,13 +68,13 @@ export default function Home() {
 
         {/* ────── IDENTITÉ ────── */}
         <div className="flex flex-col items-center text-center pb-4">
-          <div className="mb-3 h-16 w-16 overflow-hidden rounded-full border-2 border-[#2a2a2a]">
+          <div className="relative mb-3 h-20 w-20 overflow-hidden rounded-full border-2 border-[#2a2a2a] bg-[#1c1c1e]">
             <Image
-              src="https://github.com/yanix2445.png"
+              src="/8D092FAE-A234-4220-AD59-C9AA72D438EF_1_105_c.jpeg"
               alt="Yanis Harrat"
-              width={64}
-              height={64}
-              className="object-cover"
+              fill
+              className="object-cover object-center"
+              priority
             />
           </div>
           <h1 className="text-xl font-semibold">Yanis Harrat</h1>
@@ -78,6 +94,9 @@ export default function Home() {
           <div className="mt-4 flex flex-wrap justify-center gap-2">
             <ContactBadge icon={<Mail className="h-3 w-3" />} href="mailto:yanis.amine.harrat@gmail.com" />
             <ContactBadge icon={<Phone className="h-3 w-3" />} href="tel:0768187934" />
+            <Suspense fallback={<div className="h-[28px] w-[52px] rounded-full bg-[#1c1c1e] border border-[#2a2a2a] animate-pulse" />}>
+              <GithubBadge username="yanix2445" />
+            </Suspense>
             <ContactBadge icon={<Instagram className="h-3 w-3" />} value="10K" href="https://instagram.com/yanix2445" />
             <ContactBadge icon={<Linkedin className="h-3 w-3" />} value="300+" href="https://linkedin.com/in/yanis-harrat" />
           </div>
